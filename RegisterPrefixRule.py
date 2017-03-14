@@ -38,9 +38,10 @@ class RegisterPrefixRule(AnsibleLintRule):
             register = task['register']
             try:
                 role = self.rolename(file['path'])
+                prefix = '{0}_register_'.format(role)
             except BaseException:
-                return False
-            return not register.startswith('{0}_register_'.format(role))
+                prefix = 'register_'
+            return not register.startswith(prefix)
         return False
 
     def rolename(self, file):
