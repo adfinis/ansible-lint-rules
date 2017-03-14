@@ -30,9 +30,6 @@ class RegisterPrefixRule(AnsibleLintRule):
     """
     tags = ['formatting']
 
-    def match(self, file, line):
-        return False
-
     def matchtask(self, file, task):
         if 'register' in task:
             register = task['register']
