@@ -23,7 +23,8 @@ from ansiblelint import AnsibleLintRule
 
 class RegisterPrefixRule(AnsibleLintRule):
     id = 'ADFINIS0002'
-    shortdesc = "Registered variable must always have a prefix \"$ROLENAME_register_\""
+    shortdesc = "Registered variable must always have a prefix " \
+                "\"$ROLENAME_register_\""
     description = """
     Each registered variable name must have a prefix "$ROLENAME_register_",
     because each variable should be unique.
