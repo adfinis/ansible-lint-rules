@@ -18,6 +18,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+import re
+
 from ansiblelint import AnsibleLintRule
 
 
@@ -42,9 +44,12 @@ class RegisterPrefixRule(AnsibleLintRule):
             return not register.startswith(prefix)
         return False
 
-    def rolename(self, file):
-        elements = file.split('/')
+    def rolename(self, filename):
+        elements = re.findall(r"[\w']+", filename)
         if 'tasks' in elements:
+            # split the file path into elements and
+            # get the element before "tasks",
+            # which is most likely the full rolename
             idx = elements.index('tasks') - 1
             return elements[idx]
         raise IndexError('tasks not in path')
