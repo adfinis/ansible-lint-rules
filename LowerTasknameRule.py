@@ -18,7 +18,11 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-from ansiblelint import AnsibleLintRule
+try:
+    from ansiblelint.rules import AnsibleLintRule
+# Backwards compatibility
+except ImportError:
+    from ansiblelint import AnsibleLintRule
 
 
 class LowerTasknameRule(AnsibleLintRule):
