@@ -37,11 +37,11 @@ class RegisterPrefixRule(AnsibleLintRule):
     """
     tags = ['formatting']
 
-    def matchtask(self, file, task):
+    def matchtask(self, task):
         if 'register' in task:
             register = task['register']
             try:
-                role = self.rolename(file['path'])
+                role = self.rolename(task['__file__'])
                 prefix = '{0}_register_'.format(role)
             except BaseException:
                 prefix = 'register_'

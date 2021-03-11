@@ -31,5 +31,5 @@ class LowerTasknameRule(AnsibleLintRule):
     description = "Tasknames should only contain lowercase letters and numbers"
     tags = ['formatting']
 
-    def matchtask(self, file, task):
+    def matchtask(self, task):
         return not task.get('name', '').islower()
